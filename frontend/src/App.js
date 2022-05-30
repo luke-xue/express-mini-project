@@ -1,8 +1,9 @@
 import "./App.css";
 import axios from "axios";
-import post from 'post.js'
+import Post from './Post.js'
 
 import { useState, useEffect } from "react";
+import { List, Grid } from '@mui/material';
 
 function App() {
   const [info, setInfo] = useState();
@@ -59,7 +60,11 @@ function App() {
       </div>
       {/*info && info.map((item)=> <div><p>Username: {item.name}</p> 
         <p>Message: {item.content}</p> </div>)*/}
-      {info && info.map((item)=> <post username = {item.name} content = {item.content}/>)}
+        <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" style={{ minHeight: '10vh' }}>
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      {info && info.map((item)=> <Post username = {item.name} content = {item.content}/>)}
+      </List>
+      </Grid>
     </div>
   );
 }
